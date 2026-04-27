@@ -1,11 +1,12 @@
 # VPC
 resource "aws_vpc" "securescale" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
   enable_dns_support   = true
 
   tags = {
-    Name = "SecureScale-VPC"
+    Name        = "SecureScale-VPC"
+    Environment = var.environment
   }
 }
 
@@ -14,7 +15,8 @@ resource "aws_internet_gateway" "securescale" {
   vpc_id = aws_vpc.securescale.id
 
   tags = {
-    Name = "SecureScale-IGW"
+    Name        = "SecureScale-IGW"
+    Environment = var.environment
   }
 }
 
@@ -26,7 +28,8 @@ resource "aws_subnet" "public_1" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "SecureScale-Public-1"
+    Name        = "SecureScale-Public-1"
+    Environment = var.environment
   }
 }
 
@@ -38,7 +41,8 @@ resource "aws_subnet" "public_2" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "SecureScale-Public-2"
+    Name        = "SecureScale-Public-2"
+    Environment = var.environment
   }
 }
 
@@ -49,7 +53,8 @@ resource "aws_subnet" "private_1" {
   availability_zone = "us-east-1a"
 
   tags = {
-    Name = "SecureScale-Private-1"
+    Name        = "SecureScale-Private-1"
+    Environment = var.environment
   }
 }
 
@@ -60,7 +65,8 @@ resource "aws_subnet" "private_2" {
   availability_zone = "us-east-1b"
 
   tags = {
-    Name = "SecureScale-Private-2"
+    Name        = "SecureScale-Private-2"
+    Environment = var.environment
   }
 }
 
@@ -74,7 +80,8 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "SecureScale-Public-RT"
+    Name        = "SecureScale-Public-RT"
+    Environment = var.environment
   }
 }
 

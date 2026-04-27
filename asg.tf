@@ -30,7 +30,8 @@ resource "aws_iam_role" "ec2_role" {
   })
 
   tags = {
-    Name = "SecureScale-EC2-Role"
+    Name        = "SecureScale-EC2-Role"
+    Environment = var.environment
   }
 }
 
@@ -50,7 +51,7 @@ resource "aws_iam_instance_profile" "ec2_profile" {
 resource "aws_launch_template" "securescale" {
   name_prefix   = "SecureScale-"
   image_id      = data.aws_ami.amazon_linux.id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
 
   network_interfaces {
     associate_public_ip_address = true
@@ -74,7 +75,8 @@ resource "aws_launch_template" "securescale" {
   tag_specifications {
     resource_type = "instance"
     tags = {
-      Name = "SecureScale-WebServer"
+      Name        = "SecureScale-WebServer"
+      Environment = var.environment
     }
   }
 }
@@ -82,9 +84,9 @@ resource "aws_launch_template" "securescale" {
 # Auto Scaling Group
 resource "aws_autoscaling_group" "securescale" {
   name                = "SecureScale-ASG"
-  desired_capacity    = 2
-  min_size            = 1
-  max_size            = 2
+  desired_capacity    = var.asg_desired
+  min_size            = var.asg_min
+  max_size            = var.asg_max
   target_group_arns   = [aws_lb_target_group.securescale.arn]
   vpc_zone_identifier = [aws_subnet.public_1.id, aws_subnet.public_2.id]
 
