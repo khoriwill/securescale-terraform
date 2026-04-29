@@ -1,4 +1,4 @@
-markdown# SecureScale — AWS Cloud Infrastructure
+SecureScale — AWS Cloud Infrastructure
 
 Production-grade, multi-AZ auto-scaling web infrastructure built and deployed 
 using Terraform Infrastructure as Code with automated CI/CD via GitHub Actions.

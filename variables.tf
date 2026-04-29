@@ -39,3 +39,8 @@ variable "vpc_cidr" {
   type        = string
   default     = "10.0.0.0/16"
 }
+variable "account_id" {
+  description = "AWS account ID"
+  type        = string
+  default     = "485141928563"
+}
