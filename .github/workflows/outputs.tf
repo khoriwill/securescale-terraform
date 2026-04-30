@@ -22,8 +22,3 @@ output "asg_name" {
   description = "The name of the Auto Scaling Group"
   value       = aws_autoscaling_group.securescale.name
 }
-output "rds_endpoint" {
-  description = "RDS database endpoint"
-  value       = aws_db_instance.securescale.endpoint
-  sensitive   = true
-}

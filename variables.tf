@@ -44,3 +44,15 @@ variable "account_id" {
   type        = string
   default     = "485141928563"
 }
+variable "db_username" {
+  description = "RDS master username"
+  type        = string
+  default     = "admin"
+  sensitive   = true
+}
+variable "db_password" {
+  description = "RDS master password"
+  type        = string
+  default     = "SecureScale2024!"
+  sensitive   = true
+}
