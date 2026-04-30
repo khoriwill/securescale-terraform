@@ -63,20 +63,22 @@ Every API call recorded to S3
 
 ## Project Structure
 securescale-terraform/
-├── main.tf               # Provider config + S3 remote backend
-├── variables.tf          # Configurable inputs
-├── outputs.tf            # ALB DNS, VPC ID, subnet IDs
-├── vpc.tf                # VPC, subnets, IGW, route tables
-├── security_groups.tf    # ALB and EC2 security groups
-├── alb.tf                # Load balancer, target group, listener
-├── asg.tf                # IAM, launch template, auto scaling
+├── main.tf            ← Provider + S3 remote backend
+├── variables.tf       ← All configurable inputs
+├── outputs.tf         ← ALB, VPC, S3, RDS endpoints
+├── vpc.tf             ← Network foundation
+├── security_groups.tf ← Layered firewall rules
+├── alb.tf             ← Load balancer + health checks
+├── asg.tf             ← IAM + EC2 + Auto Scaling
+├── cloudtrail.tf      ← Audit logging
+├── ssl.tf             ← HTTPS ready to activate
+├── rds.tf             ← Database layer
+├── s3.tf              ← Asset storage + IAM access
+├── monitoring.tf      ← CloudWatch + SNS alerts
+├── README.md          ← Portfolio documentation
 └── .github/
-└── workflows/
-└── terraform.yml # CI/CD pipeline
-├── rds.tf                # RDS MySQL in private subnets
-├── cloudtrail.tf         # Audit logging
-└── ssl.tf                # HTTPS ready (activate with domain)
-
+    └── workflows/
+        └── terraform.yml ← CI/CD pipeline
 ---
 
 ## Deploy It Yourself
