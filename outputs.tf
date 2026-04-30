@@ -27,3 +27,7 @@ output "rds_endpoint" {
   value       = aws_db_instance.securescale.endpoint
   sensitive   = true
 }
+output "s3_bucket_name" {
+  description = "S3 bucket for application assets"
+  value       = aws_s3_bucket.app_assets.bucket
+}
