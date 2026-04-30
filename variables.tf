@@ -56,3 +56,8 @@ variable "db_password" {
   default     = "SecureScale2024!"
   sensitive   = true
 }
+variable "alert_email" {
+  description = "Email address for CloudWatch alerts"
+  type        = string
+  default     = "khoriwill@gmail.com"
+}
