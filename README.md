@@ -6,16 +6,22 @@ using Terraform Infrastructure as Code with automated CI/CD via GitHub Actions.
 ---
 
 ## Architecture
+
+```
 Internet
-↓
+    ↓
 Application Load Balancer (SecureScale-ALB)
 Public Subnets — us-east-1a + us-east-1b
-↓               ↓
+    ↓               ↓
 EC2 (us-east-1a)  EC2 (us-east-1b)
 Apache ✓          Apache ✓
-↑               ↑
-Auto Scaling Group (desired: 2, min: 1, max: 2)
-
+    ↓               ↓
+RDS MySQL (Private Subnets)
+No public access — EC2 only
+    ↓
+CloudTrail Audit Logging
+Every API call recorded to S3
+```
 ---
 
 ## What This Demonstrates
@@ -51,6 +57,7 @@ Auto Scaling Group (desired: 2, min: 1, max: 2)
 | State Backend | S3 + DynamoDB locking |
 | CI/CD | GitHub Actions |
 | Web Server | Apache HTTP |
+| RDS MySQL | Database layer (private subnets) |
 
 ---
 
@@ -66,6 +73,9 @@ securescale-terraform/
 └── .github/
 └── workflows/
 └── terraform.yml # CI/CD pipeline
+├── rds.tf                # RDS MySQL in private subnets
+├── cloudtrail.tf         # Audit logging
+└── ssl.tf                # HTTPS ready (activate with domain)
 
 ---
 
