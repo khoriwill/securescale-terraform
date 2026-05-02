@@ -1,0 +1,1 @@
+{"statusCode": 200, "body": "{\"message\": \"AI Ops Advisor completed successfully\", \"report\": \"ai-reports/2026-05-02-12-21-report.json\", \"metrics\": {\"cpu_avg\": 0.48, \"alb_latency\": 0.0, \"unhealthy_hosts\": 0.0, \"http_5xx\": 0}}"}
