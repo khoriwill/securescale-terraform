@@ -125,3 +125,4 @@ Every push to `main` triggers the GitHub Actions pipeline:
 ---
 
 *Built as part of SecureScale — a hands-on AWS Solutions Architect portfolio project.*
+<!-- demo push 2026-07-30 -->
