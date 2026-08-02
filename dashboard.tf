@@ -101,7 +101,7 @@ resource "aws_cloudwatch_dashboard" "securescale" {
         width  = 12
         height = 6
         properties = {
-          title  = "Alarm Status"
+          title = "Alarm Status"
           alarms = [
             aws_cloudwatch_metric_alarm.high_cpu.arn,
             aws_cloudwatch_metric_alarm.unhealthy_hosts.arn,
